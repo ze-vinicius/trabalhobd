@@ -20,7 +20,7 @@ class App
          */
         define('APP_HOST'       , $_SERVER['HTTP_HOST'] . "/mvc-php-crud-produto");
         define('PATH'           , realpath('./'));
-        define('TITLE'          , "CRUD - Aplicação MVC em PHP - DevMedia");
+        define('TITLE'          , "Loja Comica");
         define('DB_HOST'        , "localhost");
         define('DB_USER'        , "root");
         define('DB_PASSWORD'    , "");

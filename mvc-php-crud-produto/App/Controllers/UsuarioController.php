@@ -15,6 +15,24 @@ class UsuarioController extends Controller
         Sessao::limpaFormulario();
         Sessao::limpaMensagem();
     }
+    
+    public function logar()
+    {
+        $usuarioDAO = new UsuarioDAO();
+        $usuario = $usuarioDAO->getUsuarioLogin($_POST['usuario'], md5($_POST['senha']));
+
+        
+        if($usuario)
+        {
+            Sessao::login($usuario);
+            $this->redirect('/home');
+        }else
+        {
+            Sessao::gravaMensagem("usario ou senha incorretos");
+            $this->redirect('/usuario/login');
+        }
+
+    }
 
     public function salvar()
     {
@@ -60,6 +78,13 @@ class UsuarioController extends Controller
     public function index()
     {
         $this->redirect('/usuario/cadastro');
+    }
+    public function login()
+    {
+        $this->render('/usuario/login');
+
+        Sessao::limpaFormulario();
+        Sessao::limpaMensagem();
     }
 
 }

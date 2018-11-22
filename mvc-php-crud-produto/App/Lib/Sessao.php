@@ -20,6 +20,14 @@ class Sessao
         $_SESSION['form'] = $form;
     }
 
+    public static function verificaUsuarioLogado(){
+        return (isset($_SESSION['login'])) ? $_SESSION['login']->getPapel() : "";
+    }
+    public static function login($usuario)
+    {
+        $_SESSION['login'] = $usuario;
+    }
+
     public static function limpaFormulario(){
         unset($_SESSION['form']);
     }
