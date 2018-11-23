@@ -17,18 +17,20 @@
                 <li <?php if($viewVar['nameController'] == "ProdutoController" && ($viewVar['nameAction'] == "" || $viewVar['nameAction'] == "index")) { ?> class="active" <?php } ?>>
                     <a href="http://<?php echo APP_HOST; ?>/produto" >Lista de Produtos</a>
                 </li>
-                <?php if($_SESSION['login']) {?>
+                <?php if($Sessao::verificaUsuarioLogado() === "0") {?>
                 <li <?php if($viewVar['nameController'] == "ProdutoController" && $viewVar['nameAction'] == "cadastro") { ?> class="active" <?php } ?>>
                     <a href="http://<?php echo APP_HOST; ?>/produto/cadastro" >Cadastro de Produto</a>
                 </li>
                 <?php }?>
-                <li <?php if($viewVar['nameController'] == "UsuarioController") { ?> class="active" <?php } ?>>
-                    <a href="http://<?php echo APP_HOST; ?>/usuario/cadastro" >Cadastro de Usuário</a>
-                </li>
-               
+               <?php if($Sessao::verificaUsuarioLogado() === "") {?>
                 <li <?php if($viewVar['nameController'] == "UsuarioController") { ?> class="active" <?php } ?>>
                     <a href="http://<?php echo APP_HOST; ?>/usuario/login" >Entrar</a>
                 </li>
+               <?php } else {?>
+                <li <?php if($viewVar['nameController'] == "UsuarioController") { ?> class="active" <?php } ?>>
+                    <a href="http://<?php echo APP_HOST; ?>/usuario/deslogar" >Sair</a>
+                </li>
+               <?php }?>
             </ul>
         </div>
     </div>

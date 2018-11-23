@@ -22,7 +22,7 @@ class UsuarioController extends Controller
         $usuario = $usuarioDAO->getUsuarioLogin($_POST['usuario'], md5($_POST['senha']));
 
         
-        if($usuario)
+        if(!empty($usuario))
         {
             Sessao::login($usuario);
             $this->redirect('/home');
@@ -32,6 +32,12 @@ class UsuarioController extends Controller
             $this->redirect('/usuario/login');
         }
 
+    }
+
+    public function deslogar()
+    {
+        Sessao::deslogar();
+        $this->redirect('/home');
     }
 
     public function salvar()

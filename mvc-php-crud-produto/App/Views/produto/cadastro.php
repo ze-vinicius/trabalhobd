@@ -13,6 +13,11 @@
                 </div>
             <?php } ?>
 
+            <?php 
+            if(!isset($_SESSION['login']) ){
+                $Sessao::gravaMensagem("URL indisponivel");
+                header('Location: http://' . APP_HOST . "/usuario/login");
+            }?>
             <form action="http://<?php echo APP_HOST; ?>/produto/salvar" method="post" id="form_cadastro">
                 <div class="form-group">
                     <label for="nome">Nome</label>

@@ -3,6 +3,9 @@
         <div class="col-md-3"></div>
         <div class="col-md-6">
 
+            <?php if($Sessao::retornaMensagem()){ ?>
+                <div class="alert alert-warning" role="alert"><?php echo $Sessao::retornaMensagem(); ?></div>
+            <?php } ?>
 
             <form action="http://<?php echo APP_HOST; ?>/usuario/logar" method="post" id="form_cadastro">
                 <div class="form-group">
@@ -17,7 +20,7 @@
                 <input type="hidden" value="1" name="papel">
                 <button type="submit" class="btn btn-success btn-sm">Entrar</button>
             </form>
-
+            <p>Ainda não possui uma conta? <a href="http://<?php echo APP_HOST; ?>/usuario/cadastro">Cadaste-se</a></p>
         </div>
         <div class=" col-md-3"></div>
     </div>

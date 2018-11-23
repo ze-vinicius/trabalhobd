@@ -1,10 +1,12 @@
 <div class="container">
     <div class="row">
     <br>
+    <?php if($Sessao::verificaUsuarioLogado() === "0"){ ?>
     <div class="col-md-12">
         <a href="http://<?php echo APP_HOST; ?>/produto/cadastro" class="btn btn-success btn-sm">Adicionar</a>
         <hr>
     </div>
+    <?php }?>
     <div class="col-md-12">
         <?php if($Sessao::retornaMensagem()){ ?>
             <div class="alert alert-warning" role="alert">
@@ -38,10 +40,12 @@
                             <td>R$ <?php echo $produto->getPreco(); ?></td>
                             <td><?php echo $produto->getQuantidade(); ?></td>
                             <td><?php echo $produto->getDataCadastro()->format('d/m/Y'); ?></td>
+                            <?php if($Sessao::verificaUsuarioLogado() === "0"){?>
                             <td>
                                 <a href="http://<?php echo APP_HOST; ?>/produto/edicao/<?php echo $produto->getId(); ?>" class="btn btn-info btn-sm">Editar</a>
                                 <a href="http://<?php echo APP_HOST; ?>/produto/exclusao/<?php echo $produto->getId(); ?>" class="btn btn-danger btn-sm">Excluir</a>
                             </td>
+                            <?php }?>
                         </tr>
                     <?php
                         }

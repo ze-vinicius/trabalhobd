@@ -21,11 +21,16 @@ class Sessao
     }
 
     public static function verificaUsuarioLogado(){
-        return (isset($_SESSION['login'])) ? $_SESSION['login']->getPapel() : "";
+        return (isset($_SESSION['login'])) ? unserialize($_SESSION['login'])->getPapel() : "";
     }
     public static function login($usuario)
     {
-        $_SESSION['login'] = $usuario;
+        $_SESSION['login'] = serialize($usuario);
+    }
+
+    public static function deslogar()
+    {
+        unset($_SESSION['login']);
     }
 
     public static function limpaFormulario(){
