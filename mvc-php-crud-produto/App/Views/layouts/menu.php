@@ -24,11 +24,14 @@
                 <?php }?>
                <?php if($Sessao::verificaUsuarioLogado() === "") {?>
                 <li <?php if($viewVar['nameController'] == "UsuarioController") { ?> class="active" <?php } ?>>
-                    <a href="http://<?php echo APP_HOST; ?>/usuario/login" >Entrar</a>
+                    <a class="btn btn-success btn-sm" href="http://<?php echo APP_HOST; ?>/usuario/login" >Entrar</a>
                 </li>
                <?php } else {?>
                 <li <?php if($viewVar['nameController'] == "UsuarioController") { ?> class="active" <?php } ?>>
-                    <a href="http://<?php echo APP_HOST; ?>/usuario/deslogar" >Sair</a>
+                    <a class="btn btn-danger btn-sm" href="http://<?php echo APP_HOST; ?>/usuario/deslogar" >Sair</a>
+                </li>
+                <li  <?php if($viewVar['nameController'] == "CarrinhoController" && ($viewVar['nameAction'] == "" || $viewVar['nameAction'] == "index")) { ?> class="active " <?php } ?>>
+                    <a  href="http://<?php echo APP_HOST; ?>/carrinho" >carrinho</a>
                 </li>
                <?php }?>
             </ul>

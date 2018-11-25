@@ -20,8 +20,12 @@ class Sessao
         $_SESSION['form'] = $form;
     }
 
+    public static function getUsuarioLogado(){
+        return (isset($_SESSION['login']) ? unserialize($_SESSION['login'])->getId() : "");
+    }
+
     public static function verificaUsuarioLogado(){
-        return (isset($_SESSION['login'])) ? unserialize($_SESSION['login'])->getPapel() : "";
+        return (isset($_SESSION['login']) ? unserialize($_SESSION['login'])->getPapel() : "");
     }
     public static function login($usuario)
     {

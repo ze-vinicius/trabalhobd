@@ -45,6 +45,11 @@
                                 <a href="http://<?php echo APP_HOST; ?>/produto/edicao/<?php echo $produto->getId(); ?>" class="btn btn-info btn-sm">Editar</a>
                                 <a href="http://<?php echo APP_HOST; ?>/produto/exclusao/<?php echo $produto->getId(); ?>" class="btn btn-danger btn-sm">Excluir</a>
                             </td>
+                            <?php }else{?>
+                                <td>
+                                <a href="http://<?php echo APP_HOST; ?>/carrinho/addCarrinho/<?php echo $produto->getId(); ?>" class="btn btn-info btn-sm">Add Carrinho</a>
+                                
+                            </td> 
                             <?php }?>
                         </tr>
                     <?php
