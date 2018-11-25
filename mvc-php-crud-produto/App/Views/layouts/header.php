@@ -9,6 +9,7 @@
 
     <link href="http://<?php echo APP_HOST; ?>/public/css/bootstrap.min.css" rel="stylesheet">
     <link href="http://<?php echo APP_HOST; ?>/public/css/main.css" rel="stylesheet">
+    <link href="http://<?php echo APP_HOST; ?>/public/font/css/open-iconic-bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
 

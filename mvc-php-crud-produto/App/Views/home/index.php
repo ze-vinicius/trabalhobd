@@ -1,7 +1,5 @@
-<div class="container">
+<div class="container bg-light">
      <div class="starter-template">
-        <div class="container">
-            <img src="http://<?php echo APP_HOST?>/public/img/banner.png" class="img-fluid">
-        </div>
+        <img src="http://<?php echo APP_HOST?>/public/img/500x500.png" class="img-fluid rounded mx-auto d-block border">
     </div>
 </div>

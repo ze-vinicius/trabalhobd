@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container bg-light">
     <div class="row">
     <br>
     <?php if($Sessao::verificaUsuarioLogado() === "0"){ ?>
@@ -30,6 +30,7 @@
                         <td class="info">Preço</td>
                         <td class="info">Quantidade</td>
                         <td class="info">Data Cadastro</td>
+                        <td class="info">Sinopse</td>
                         <?php if($Sessao::verificaUsuarioLogado() === "1" || $Sessao::verificaUsuarioLogado() === "0"){?>
                             <td class="info"></td>
                         <?php }?>
@@ -42,6 +43,7 @@
                             <td>R$ <?php echo $produto->getPreco(); ?></td>
                             <td><?php echo $produto->getQuantidade(); ?></td>
                             <td><?php echo $produto->getDataCadastro()->format('d/m/Y'); ?></td>
+                            <td><?php echo $produto->getDescricao();?></td>
                             <?php if($Sessao::verificaUsuarioLogado() === "0"){?>
                             <td>
                                 <a href="http://<?php echo APP_HOST; ?>/produto/edicao/<?php echo $produto->getId(); ?>" class="btn btn-info btn-sm">Editar</a>

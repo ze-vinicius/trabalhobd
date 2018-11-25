@@ -1,9 +1,8 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark navbar-fixed-top">
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
     <div class="container">
 
         <a class="navbar-brand" href="http://<?php echo APP_HOST; ?>" >
-            <img src="http://<?php echo APP_HOST; ?>/public/img/icone.png" width="30" height="30" class="d-inline-block align-top" alt="">
-            Cômica
+            <img src="http://<?php echo APP_HOST; ?>/public/img/1200x675.png" width="50" height="35" class="d-inline-block align-top" alt="">
         </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -30,7 +29,7 @@
                     </li>
                 <?php } else {?>
                     <li  <?php if($viewVar['nameController'] == "CarrinhoController" && ($viewVar['nameAction'] == "" || $viewVar['nameAction'] == "index")) { ?> class="active nav-item" <?php } ?>>
-                        <a  href="http://<?php echo APP_HOST; ?>/carrinho" class="nav-link" >carrinho</a>
+                        <a  href="http://<?php echo APP_HOST; ?>/carrinho" class="nav-link oi oi-cart"></a>
                     </li>
                     <li <?php if($viewVar['nameController'] == "UsuarioController") { ?> class="active nav-item" <?php } ?>>
                         <a class="btn btn-outline-danger my-2 my-sm-0" href="http://<?php echo APP_HOST; ?>/usuario/deslogar" class="nav-link">Sair</a>
