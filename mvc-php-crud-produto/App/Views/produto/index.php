@@ -47,9 +47,8 @@
                             </td>
                             <?php }else{?>
                                 <td>
-                                <a href="http://<?php echo APP_HOST; ?>/carrinho/addCarrinho/<?php echo $produto->getId(); ?>" class="btn btn-info btn-sm">Add Carrinho</a>
-                                
-                            </td> 
+                                <a href="http://<?php echo APP_HOST; ?>/carrinho/addCarrinho/<?php echo $produto->getId(); ?>" class="btn btn-info btn-sm">Adicionar Carrinho</a>
+                                </td> 
                             <?php }?>
                         </tr>
                     <?php

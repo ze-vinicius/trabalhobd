@@ -62,20 +62,29 @@ class CarrinhoController extends Controller
     
     public function efetuarCompra()
     {
+
+        $id = Sessao::getUsuarioLogado();
+
+        $carrinhoDAO = new CarrinhoDAO();
+        $produtoDao = new ProdutoDAO();
+
+        $lista = $carrinhoDAO->listar(null, $id);
         
+        foreach($lista as $carrinho)
+        {
+            $produto = $produtoDao->listar($carrinho->getIdProduto());
 
-        $produtoDAO = new ProdutoDAO();
-
-        $produto = $produtoDAO->listar($id);
-
-        if(!$produto){
-            Sessao::gravaMensagem("Produto inexistente");
-            $this->redirect('/produto');
+            if(!empty($produto))
+            {
+                $produto->setQuantidade($produto->getQuantidade() - 1);
+                $produtoDao->atualizar($produto);
+                $carrinhoDAO->excluir($carrinho);
+            }
         }
 
         self::setViewParam('produto',$produto);
 
-        $this->render('/produto/editar');
+        $this->redirect('/produto');
 
         Sessao::limpaMensagem();
 

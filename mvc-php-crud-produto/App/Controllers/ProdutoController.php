@@ -150,6 +150,5 @@ class ProdutoController extends Controller
         $this->redirect('/produto');
 
     }
-
      
 }

@@ -7,7 +7,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="http://<?php echo APP_HOST; ?>">Devmedia</a>
+            <a class="navbar-brand" href="http://<?php echo APP_HOST; ?>">Cômica</a>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
             <ul class="nav navbar-nav">
@@ -27,12 +27,12 @@
                     <a class="btn btn-success btn-sm" href="http://<?php echo APP_HOST; ?>/usuario/login" >Entrar</a>
                 </li>
                <?php } else {?>
-                <li <?php if($viewVar['nameController'] == "UsuarioController") { ?> class="active" <?php } ?>>
-                    <a class="btn btn-danger btn-sm" href="http://<?php echo APP_HOST; ?>/usuario/deslogar" >Sair</a>
-                </li>
-                <li  <?php if($viewVar['nameController'] == "CarrinhoController" && ($viewVar['nameAction'] == "" || $viewVar['nameAction'] == "index")) { ?> class="active " <?php } ?>>
-                    <a  href="http://<?php echo APP_HOST; ?>/carrinho" >carrinho</a>
-                </li>
+               <li  <?php if($viewVar['nameController'] == "CarrinhoController" && ($viewVar['nameAction'] == "" || $viewVar['nameAction'] == "index")) { ?> class="active my-2 my-lg-0" <?php } ?>>
+                   <a  href="http://<?php echo APP_HOST; ?>/carrinho" >carrinho</a>
+               </li>
+               <li <?php if($viewVar['nameController'] == "UsuarioController") { ?> class="active" <?php } ?>>
+                   <a class="btn btn-danger btn-sm" href="http://<?php echo APP_HOST; ?>/usuario/deslogar" >Sair</a>
+               </li>
                <?php }?>
             </ul>
         </div>
