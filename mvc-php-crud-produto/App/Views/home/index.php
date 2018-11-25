@@ -1,5 +1,7 @@
 <div class="container">
      <div class="starter-template">
-            <h1><?php echo TITLE; ?></h1>
+        <div class="container">
+            <img src="http://<?php echo APP_HOST?>/public/img/banner.png" class="img-fluid">
+        </div>
     </div>
 </div>

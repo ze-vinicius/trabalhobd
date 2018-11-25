@@ -3,7 +3,9 @@
 namespace App\Controllers;
 
 use App\Lib\Sessao;
+use App\Models\DAO\CompraDAO;
 use App\Models\DAO\ProdutoDAO;
+use App\Models\Entidades\Compra;
 use App\Models\Entidades\Produto;
 use App\Models\Validacao\carrinhoValidador;
 use App\Models\Entidades\Carrinho;
@@ -69,18 +71,23 @@ class CarrinhoController extends Controller
         $produtoDao = new ProdutoDAO();
 
         $lista = $carrinhoDAO->listar(null, $id);
-        
+        $compraDAO = new CompraDAO();
+        $valor = 0.0;
+
         foreach($lista as $carrinho)
         {
             $produto = $produtoDao->listar($carrinho->getIdProduto());
 
             if(!empty($produto))
             {
+                $valor += $produto->getPreco();
                 $produto->setQuantidade($produto->getQuantidade() - 1);
                 $produtoDao->atualizar($produto);
                 $carrinhoDAO->excluir($carrinho);
             }
         }
+
+        $compraDAO->salvar($id, $valor);
 
         self::setViewParam('produto',$produto);
 

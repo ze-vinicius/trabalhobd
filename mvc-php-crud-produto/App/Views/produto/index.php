@@ -30,7 +30,9 @@
                         <td class="info">Preço</td>
                         <td class="info">Quantidade</td>
                         <td class="info">Data Cadastro</td>
-                        <td class="info"></td>
+                        <?php if($Sessao::verificaUsuarioLogado() === "1" || $Sessao::verificaUsuarioLogado() === "0"){?>
+                            <td class="info"></td>
+                        <?php }?>
                     </tr>
                     <?php
                         foreach($viewVar['listaProdutos'] as $produto) {
@@ -45,10 +47,10 @@
                                 <a href="http://<?php echo APP_HOST; ?>/produto/edicao/<?php echo $produto->getId(); ?>" class="btn btn-info btn-sm">Editar</a>
                                 <a href="http://<?php echo APP_HOST; ?>/produto/exclusao/<?php echo $produto->getId(); ?>" class="btn btn-danger btn-sm">Excluir</a>
                             </td>
-                            <?php }else{?>
+                            <?php }else if($Sessao::verificaUsuarioLogado() === "1"){?>
                                 <td>
-                                <a href="http://<?php echo APP_HOST; ?>/carrinho/addCarrinho/<?php echo $produto->getId(); ?>" class="btn btn-info btn-sm">Adicionar Carrinho</a>
-                                </td> 
+                                <a href="http://<?php echo APP_HOST; ?>/carrinho/addCarrinho/<?php echo $produto->getId(); ?>" class="btn btn-info btn-sm <?php echo ($produto->getQuantidade() > 0) ? " ":"disabled"; ?> ">Adicionar Carrinho</a>
+                                </td>
                             <?php }?>
                         </tr>
                     <?php
