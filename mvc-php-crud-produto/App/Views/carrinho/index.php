@@ -45,7 +45,7 @@
                         }
                     ?>
                 </table>
-                <a href="http://<?php echo APP_HOST; ?>/carrinho/efetuarCompra/" class="btn btn-success btn-sm">comprar</a>
+                <a href="http://<?php echo APP_HOST; ?>/carrinho/comprar/" class="btn btn-success btn-sm">comprar</a>
             </div>
         <?php
             }

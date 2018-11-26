@@ -35,16 +35,16 @@ class CarrinhoController extends Controller
 
     public function comprar()
     {   
-        
+        $total = 0.0;
         $carrinhoDAO = new CarrinhoDAO();
-        self::setViewParam('carrinho',$carrinhoDAO->listar($id = null, Sessao::getUsuarioLogado()));
+        
         $carrinho = $carrinhoDAO->listar($id = null, Sessao::getUsuarioLogado());
         
         if(count($carrinho)){
             $carrinhoValidador = new CarrinhoValidador();
             $produtoDAO = new ProdutoDAO();
             foreach($carrinho as $item){
-                
+                $total =+ $item->getPreco();
                 $resultadoValidacao = $carrinhoValidador->validar($item, $produtoDAO->listar($item->getIdProduto()));
         
                 if($resultadoValidacao->getErros()){
@@ -52,7 +52,7 @@ class CarrinhoController extends Controller
                     $this->redirect('/carrinho');
                 }
             }
-            
+            self::setViewParam('carrinhoTotal',$total);
             $this->render('/carrinho/comprar');
         }else{
             Sessao::gravaMensagem("Carrinho vazio!");
@@ -61,7 +61,8 @@ class CarrinhoController extends Controller
         Sessao::limpaErro();
         
     }
-    
+
+
     public function efetuarCompra()
     {
 
@@ -81,7 +82,7 @@ class CarrinhoController extends Controller
             if(!empty($produto))
             {
                 $valor += $produto->getPreco();
-                $produto->setQuantidade($produto->getQuantidade() - 1);
+                $produto->setQuantidade($produto->getQuantidade() - $carrinho->getQuantidade());
                 $produtoDao->atualizar($produto);
                 $carrinhoDAO->excluir($carrinho);
             }
@@ -176,9 +177,8 @@ class CarrinhoController extends Controller
         $carrinhoDAO = new CarrinhoDAO();
 
         $carrinhoDAO->salvar($id_produto,Sessao::getUsuarioLogado());
-
-        echo "<script> alert('Adicionado com sucesso!')</script>";
-      
+        
+        Sessao::gravaMensagem("Produto adicionado com sucesso!");
         $this->redirect('/produto');
 
         

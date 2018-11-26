@@ -14,16 +14,15 @@
                 </div>
             <?php } ?>
 
-            <form action="http://<?php echo APP_HOST; ?>/carrinho/excluir" method="post" id="produtoCarrinho">
-                <input type="hidden" class="form-control" name="id" id="id" value="<?php  echo $viewVar['produtoCarrinho']->getIdProduto(); ?>">
+            <form action="http://<?php echo APP_HOST; ?>/carrinho/efetuarCompra" method="post" id="produtoCarrinho">
 
                 <div class="panel panel-danger">
                     <div class="panel-body">
-                        Deseja realmente excluir o produto do carinho: <?php echo $viewVar['produtoCarrinho']->getProduto(); ?> ?
+                        total da compra: R$  <?php  echo (double)$viewVar['carrinhoTotal']; ?> 
                     </div>
                     <div class="panel-footer"> 
-                        <button type="submit" class="btn btn-danger btn-sm">Excluir</button>
-                        <a href="http://<?php echo APP_HOST; ?>/carrinho" class="btn btn-info btn-sm">Voltar</a>
+                        <button type="submit" class="btn btn-danger btn-sm">Comprar</button>
+                        <a href="http://<?php echo APP_HOST; ?>/carrinho/" class="btn btn-info btn-sm">Voltar</a>
                     </div>
                 </div>
             </form>

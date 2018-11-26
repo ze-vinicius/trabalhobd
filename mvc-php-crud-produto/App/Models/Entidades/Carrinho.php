@@ -40,5 +40,14 @@ class Carrinho
         $this->produto = $produto;
     }
 
+    public function getPreco()
+    {
+        return $this->preco;
+    }
+
+    public function setPreco($preco)
+    {
+        $this->preco = $preco;
+    }
 
 }
